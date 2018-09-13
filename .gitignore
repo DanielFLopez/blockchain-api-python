@@ -102,3 +102,26 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+
+.idea
+*.pyc
+.gitignore~
+.coverage
+flake8.txt
+
+htmlcov/
+media/
+blockchain_api_python/settings/secrets.json
+*/migrations/*
+*/__pycache__/*
+
+# No ignorar!
+!*/migrations/__init__.py
+!.gitignore
+
+.coveragerc~
+.flake8~
+manage.py
+requirements.txt~
+blockchain_api_python/wsgi.py
