@@ -85,9 +85,9 @@ WSGI_APPLICATION = 'blockchain_api_python.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'tpaga',
-        'USER': 'tpaga',
-        'PASSWORD': 'tpaga',
+        'NAME': 'api',
+        'USER': 'api',
+        'PASSWORD': 'api',
         'HOST': 'localhost',
     }
 }

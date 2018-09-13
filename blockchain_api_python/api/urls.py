@@ -2,7 +2,7 @@ from rest_framework import routers
 
 from api.views import InitializeAccountUpdateView, TransactionAccountUpdateView, HistoryTransactionsListView
 
-router = routers.SimpleRouter()
+router = routers.DefaultRouter()
 
 router.register(r'initialize', InitializeAccountUpdateView)
 router.register(r'transaction', TransactionAccountUpdateView)

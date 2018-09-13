@@ -6,6 +6,10 @@ class Account(models.Model):
 
     balance = models.IntegerField(default=0, validators=[MinValueValidator(0)])
 
+    def initialize(self):
+        self.balance = 0
+        self.save()
+
     @classmethod
     def transaction(cls, amount):
         with transaction.atomic():
