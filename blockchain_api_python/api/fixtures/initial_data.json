@@ -1,0 +1,9 @@
+[
+  {
+    "model": "api.Account",
+    "pk": 1,
+    "fields": {
+      "balance": 0
+    }
+  }
+]
