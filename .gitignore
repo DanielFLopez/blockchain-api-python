@@ -122,6 +122,5 @@ blockchain_api_python/settings/secrets.json
 
 .coveragerc~
 .flake8~
-manage.py
 requirements.txt~
 blockchain_api_python/wsgi.py
