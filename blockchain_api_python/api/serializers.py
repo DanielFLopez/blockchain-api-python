@@ -1,21 +1,25 @@
 from rest_framework import serializers
 
-from api.models import Account
+from api.models import Account, Block
 
 
 class AccountSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Account
-        fields = ['id']
-        read_only_fields = ['id']
+        fields = ['id', 'balance']
+        read_only_fields = ['id', 'balance']
 
 
-class TransactionSerializer(AccountSerializer):
-
+class AccountValueSerializer(serializers.ModelSerializer):
     value = serializers.IntegerField()
 
     class Meta:
         model = Account
-        fields = ['id', 'value']
-        read_only_fields = AccountSerializer.Meta.fields + ['value']
+        fields = ['value']
+
+
+class BlockSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Block
+        fields = ['id', 'timestamp', 'data', 'previous_hash', 'hash']
+        read_only_fields = ['id', 'timestamp', 'data', 'previous_hash', 'hash']
