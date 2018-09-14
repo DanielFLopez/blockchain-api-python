@@ -7,11 +7,11 @@ Crear una base de datos en PostgreSQL con las credenciales especificadas en el s
 
 Crear un virtualenv, para mayor comodidad se recomienda utilizar virtualenvwrapper.
 
-Instalar los requirements en el virtualenv::
+Instalar los requirements en el virtualenv
 
     pip install -r requirements.txt
 
-Crear las migraciones::
+Crear las migraciones
 
     python manage.py makemigrations
 
@@ -19,15 +19,15 @@ Correr las migraciones::
 
     python manage.py migrate
 
-Correr el siguiente comando el cual crear el bloque inicial::
+Correr el siguiente comando el cual crear el bloque inicial
 
     python manage.py shell < api/initialize.py
     
-Correr el comando para cargar la cuenta incial::
+Correr el comando para cargar la cuenta incial
     
     python manage.py loaddata initial_data
 
-Correr el servidor::
+Correr el servidor
 
     python manage.py runserver
 
@@ -39,15 +39,15 @@ Instrucciones para medir la cobertura de los test:
 ============================================================
 
 Se debe tener el coverage instalado en el ambiente virtual, una vez en la carpeta del proyecto se debe correr el
-siguiente comando con el ambiente activo::
+siguiente comando con el ambiente activo
 
     coverage run manage.py test
 
-Para ver los resultados por la consola se debe usar el siguiente comando::
+Para ver los resultados por la consola se debe usar el siguiente comando
 
     coverage report
 
-Para generar los archivos html del coverage se debe usar el siguiente comando::
+Para generar los archivos html del coverage se debe usar el siguiente comando
 
     coverage html
     
