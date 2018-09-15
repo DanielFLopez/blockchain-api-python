@@ -14,8 +14,11 @@ class SetZeroAccountUpdateViewSet(UpdateModelMixin, GenericViewSet):
 
     def update(self, request, *args, **kwargs):
         try:
+            # the object instance is obtained
             obj = self.get_object()
+            # the account is reset to zero
             obj.initialize()
+            # a new block is created
             last_hash = Block.block_manager.get_last_block_hash()
             Block.block_manager.create_new_block({'message': "The value of the balance is set to zero."}, last_hash)
         except InitialBlockError as e:
@@ -28,14 +31,20 @@ class TransactionAccountUpdateViewSet(UpdateModelMixin, GenericViewSet):
     serializer_class = AccountValueSerializer
 
     def update(self, request, *args, **kwargs):
+        # the object instance is obtained
         obj = self.get_object()
         serializer = self.serializer_class(data=request.data)
+        # the data is validated with the serializer
         if serializer.is_valid():
             value = serializer.validated_data['value']
             try:
+                # the value is added to the account
                 obj.transaction(value)
+                # the value of the object is updated after the transaction
                 obj.refresh_from_db()
+                # get the hash of the last block
                 last_hash = Block.block_manager.get_last_block_hash()
+                # a new block is created with the values of the transaction
                 Block.block_manager.create_new_block(
                     {
                         "message": "Successful transaction.",

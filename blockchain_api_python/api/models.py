@@ -9,12 +9,13 @@ from api.managers import BlockManager
 
 
 class Account(models.Model):
-
+    # model to register the account
     balance = models.IntegerField(default=0, validators=[MinValueValidator(0)])
 
     @classmethod
     def initialize(cls):
         with transaction.atomic():
+            # the registry is blocked while updating
             account = (cls.objects.select_for_update().get(id=1))
             account.balance = 0
             account.save()
@@ -22,6 +23,7 @@ class Account(models.Model):
     @classmethod
     def transaction(cls, amount):
         with transaction.atomic():
+            # the registry is blocked while updating
             account = (cls.objects.select_for_update().get(id=1))
             if (account.balance + amount) < 0:
                 raise NotEnoughFundsError()
@@ -35,7 +37,7 @@ class Account(models.Model):
 
 
 class Block(models.Model):
-
+    # model to record the transactions in the blocks
     timestamp = models.DateTimeField(auto_now=True)
     data = JSONField()
     previous_hash = models.CharField(max_length=500)
@@ -45,6 +47,7 @@ class Block(models.Model):
     block_manager = BlockManager()
 
     def make_own_hash(self):
+        # metodo para crear el hash del bloque
         sha = hasher.sha256()
         sha.update((str(self.pk) +
                     str(self.timestamp) +
