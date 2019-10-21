@@ -5,7 +5,7 @@ command-not-found==0.3
 configobj==5.0.6
 coverage==4.5.1
 cryptography==1.2.3
-Django==2.1.1
+Django==2.1.11
 djangorestframework==3.8.2
 flake8==3.5.0
 gunicorn==19.9.0
